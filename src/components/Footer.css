@@ -1,0 +1,73 @@
+.footer {
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem 2.2rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+.footer p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.footer h3 {
+  margin: 0 0 1rem;
+  color: #f8fafc;
+  font-size: 1.5rem;
+}
+
+.contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+.linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  color: #e0f2fe;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(14, 116, 144, 0.25);
+}
+
+.linkedin-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.mail-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.mail-link:hover,
+.linkedin-btn:hover {
+  opacity: 0.9;
+}
+
+.contact-signature {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
