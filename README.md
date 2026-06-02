@@ -1,73 +1,37 @@
-# React + TypeScript + Vite
+# Tom Sautron - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur mon portfolio de développeur gameplay.
 
-Currently, two official plugins are available:
+Ce site présente mes projets personnels, mes participations en game jam, et mes expériences en studio, avec un focus sur la programmation gameplay, l'itération rapide et le ressenti joueur.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## A propos
 
-## React Compiler
+Je suis développeur gameplay junior.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+J'ai contribué principalement chez Cyanide (Tour de France 2025/2026) sur du debug, de l'UI et des features gameplay, puis consolidé mes bases de production chez Microids.
 
-## Expanding the ESLint configuration
+En parallèle, je développe des prototypes sur Unity/Godot et j'expérimente aussi en C++.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Ce que vous trouverez
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Une page d'accueil avec ma présentation
+- Une section Projets avec des cartes interactives
+- Des pages détail par projet
+- Une section dédiée aux petits projets/game jams
+- Une section contact directe
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Technologies
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React
+- TypeScript
+- Vite
+- React Router
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Contact
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- LinkedIn: https://www.linkedin.com/in/tom-sautron/
+- Email: tomsautron.pro@gmail.com
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+Merci pour votre visite.

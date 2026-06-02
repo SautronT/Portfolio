@@ -12,6 +12,28 @@ dist
 dist-ssr
 *.local
 
+# Environment files / secrets
+.env
+.env.*
+!.env.example
+
+# Coverage / reports
+coverage
+*.lcov
+
+# OS / temp
+Thumbs.db
+*.tmp
+
+# Package manager / tool state
+.npm/
+.pnpm-store/
+.yarn/
+
+# Deploy / cloud local state
+.vercel/
+.netlify/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
