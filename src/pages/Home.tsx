@@ -39,7 +39,7 @@ function Home() {
           loop
           playsInline
         >
-            <source src={`${baseUrl}video/bloodborne.mp4`} type="video/mp4" />
+            <source src={`${baseUrl}video/presvid.mp4`} type="video/mp4" />
           Votre navigateur ne supporte pas la vidéo HTML5.
         </video>
         <div className="video-overlay"></div>
