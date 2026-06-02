@@ -9,6 +9,11 @@ function Home() {
   const { language } = useLanguage()
   const t = translations[language]
   const navigate = useNavigate()
+  const baseUrl = import.meta.env.BASE_URL
+  const resolveAsset = (path: string) => {
+    if (/^https?:\/\//.test(path)) return path
+    return `${baseUrl}${path.replace(/^\//, "")}`
+  }
 
   const projects = projectsData
 
@@ -34,7 +39,7 @@ function Home() {
           loop
           playsInline
         >
-          <source src="video\bloodborne.mp4" type="video/mp4" />
+            <source src={`${baseUrl}video/bloodborne.mp4`} type="video/mp4" />
           Votre navigateur ne supporte pas la vidéo HTML5.
         </video>
         <div className="video-overlay"></div>
@@ -49,7 +54,7 @@ function Home() {
         <div className="projects-grid">
           {projects.map((project) => (
             <div key={project.id} className="project-card" onClick={() => navigate(`/project/${project.id}`)}>
-              <div className="project-image" style={{ backgroundImage: `url(${(project as any).capsuleImage})` }}></div>
+              <div className="project-image" style={{ backgroundImage: `url(${resolveAsset((project as any).capsuleImage)})` }}></div>
               <div className="project-overlay">
                 <h4>{(t as any)[project.titleKey]}</h4>
                 <p>{(t as any)[(project as any).descCardKey]}</p>

@@ -12,6 +12,11 @@ function ProjectDetail() {
   const { language } = useLanguage()
   const t = translations[language]
   const [scrollY, setScrollY] = useState(0)
+  const baseUrl = import.meta.env.BASE_URL
+  const resolveAsset = (path: string) => {
+    if (/^https?:\/\//.test(path)) return path
+    return `${baseUrl}${path.replace(/^\//, "")}`
+  }
   const smallProjects = language === "fr"
     ? [
         {
@@ -78,10 +83,10 @@ function ProjectDetail() {
   const carouselImages = (project as any)?.carouselImages ?? []
   const projectNav = (
     <nav className="project-floating-nav" aria-label="Project page navigation">
-      <a href="/#home">{(t as any).home}</a>
-      <a href="/#projects">{(t as any).projects}</a>
-      <a href="/#about">{(t as any).about}</a>
-      <a href="/#contact">{(t as any).contact}</a>
+      <a href={`${baseUrl}#home`}>{(t as any).home}</a>
+      <a href={`${baseUrl}#projects`}>{(t as any).projects}</a>
+      <a href={`${baseUrl}#about`}>{(t as any).about}</a>
+      <a href={`${baseUrl}#contact`}>{(t as any).contact}</a>
     </nav>
   )
 
@@ -119,7 +124,7 @@ function ProjectDetail() {
           left: 0,
           width: '100%',
           height: 'calc(100vw * 1069 / 2500)',
-          backgroundImage: `url(${(project as any).parallax1})`,
+          backgroundImage: `url(${resolveAsset((project as any).parallax1)})`,
           backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           transform: `translateY(${scrollY * 0.35}px)`,
@@ -130,7 +135,7 @@ function ProjectDetail() {
           left: 0,
           width: '100%',
           height: 'calc(100vw * 1069 / 2500)',
-          backgroundImage: `url(${(project as any).parallax2})`,
+          backgroundImage: `url(${resolveAsset((project as any).parallax2)})`,
           backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           opacity: 0.7,
@@ -142,7 +147,7 @@ function ProjectDetail() {
           left: 0,
           width: '100%',
           height: 'calc(100vw * 1069 / 2500)',
-          backgroundImage: `url(${(project as any).parallax3})`,
+          backgroundImage: `url(${resolveAsset((project as any).parallax3)})`,
           backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           opacity: 0.5,
@@ -172,7 +177,7 @@ function ProjectDetail() {
                 const idx = i % carouselImages.length
                 return (
                   <div key={i} className="grid-item" style={{ width: '100%', position: 'relative', paddingTop: '56.25%', overflow: 'hidden', borderRadius: '8px', background: '#000' }}>
-                    <img src={carouselImages[idx]} alt={`grid-${idx}`} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <img src={resolveAsset(carouselImages[idx])} alt={`grid-${idx}`} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </div>
                 )
               })}
@@ -202,7 +207,7 @@ function ProjectDetail() {
         minHeight: '100vh', 
         color: 'white', 
         padding: '2rem',
-        backgroundImage: `url('/Images/woodTexture.png')`,
+        backgroundImage: `url('${resolveAsset('/Images/woodTexture.png')}')`,
         backgroundRepeat: 'repeat',
         backgroundPosition: 'top left',
         backgroundSize: 'auto',
@@ -212,8 +217,8 @@ function ProjectDetail() {
         justifyContent: 'center'
       }}>
         {projectNav}
-        <img src="/Images/Hands.png" alt="hands-left" style={{ position: 'absolute', top: 0, left: '15%', transform: 'scale(-1, -1)', width: '15vw', maxWidth: '160px', zIndex: 2, pointerEvents: 'none' }} />
-        <img src="/Images/Hands.png" alt="hands-right" style={{ position: 'absolute', top: 0, right: '15%', transform: 'scaleY(-1)', width: '15vw', maxWidth: '160px', zIndex: 2, pointerEvents: 'none' }} />
+        <img src={resolveAsset('/Images/Hands.png')} alt="hands-left" style={{ position: 'absolute', top: 0, left: '15%', transform: 'scale(-1, -1)', width: '15vw', maxWidth: '160px', zIndex: 2, pointerEvents: 'none' }} />
+        <img src={resolveAsset('/Images/Hands.png')} alt="hands-right" style={{ position: 'absolute', top: 0, right: '15%', transform: 'scaleY(-1)', width: '15vw', maxWidth: '160px', zIndex: 2, pointerEvents: 'none' }} />
         <button className="back-home" onClick={() => navigate('/')} style={{ marginBottom: '1rem' }}>{(t as any).backToHome}</button>
         <div style={{ width: 'min(80ch, 100%)', padding: '2rem', borderRadius: '10px', textAlign: 'center', transform: 'translateY(4vh)' }}>
           <h1 style={{ fontSize: 'clamp(1.75rem,3.5vw,3rem)', marginBottom: '1rem', color: '#f59e0b' }}>{(t as any)[project.titleKey]}</h1>
@@ -221,9 +226,9 @@ function ProjectDetail() {
 
           {/* GIF, descriptive text, then GIF (using gif_oldf_1 for both) */}
           <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-            <img src="/video/gif_oldf_1.gif" alt="gif-1" style={{ width: '90%', maxWidth: '520px', borderRadius: '8px' }} />
+            <img src={resolveAsset('/video/gif_oldf_1.gif')} alt="gif-1" style={{ width: '90%', maxWidth: '520px', borderRadius: '8px' }} />
             <p style={{ fontSize: 'clamp(0.75rem,1vw,1.15rem)', textAlign: 'center', maxWidth: '80ch' }} dangerouslySetInnerHTML={{ __html: (t as any).project2ExtraDesc }} />
-            <img src="/video/gif_oldf_1.gif" alt="gif-2" style={{ width: '90%', maxWidth: '520px', borderRadius: '8px' }} />
+            <img src={resolveAsset('/video/gif_oldf_1.gif')} alt="gif-2" style={{ width: '90%', maxWidth: '520px', borderRadius: '8px' }} />
           </div>
         </div>
         <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
@@ -254,7 +259,7 @@ function ProjectDetail() {
       }}>
         {projectNav}
         <div style={{ width: '100%', height: '55vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginTop: '2rem', marginBottom: '1rem' }}>
-          <img src="/Images/tdf_banner.jpg" alt="tdf banner" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          <img src={resolveAsset('/Images/tdf_banner.jpg')} alt="tdf banner" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <div style={{ width: 'min(80ch, 100%)', padding: '2rem' }}>
           <button className="back-home" onClick={() => navigate('/')} style={{ marginBottom: '1rem' }}>{(t as any).backToHome}</button>
@@ -262,8 +267,8 @@ function ProjectDetail() {
           <p style={{ fontSize: 'clamp(0.85rem,1.05vw,1.05rem)', textAlign: 'center', maxWidth: '80ch', color: 'white' }} dangerouslySetInnerHTML={{ __html: (t as any)[(project as any).descDetailKey] }} />
 
           <div className="tdf-gallery">
-            <img src="/Images/tdf1.jpg" alt="tdf1" className="tdf-img" />
-            <img src="/Images/tdf2.jpg" alt="tdf2" className="tdf-img" />
+            <img src={resolveAsset('/Images/tdf1.jpg')} alt="tdf1" className="tdf-img" />
+            <img src={resolveAsset('/Images/tdf2.jpg')} alt="tdf2" className="tdf-img" />
             <p className="tdf-extra" dangerouslySetInnerHTML={{ __html: (t as any).project3ExtraDesc }}></p>
           </div>
           <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center'}}>
@@ -284,7 +289,7 @@ function ProjectDetail() {
       }}>
         {projectNav}
         <div style={{ width: '100%', height: '55vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginTop: '2rem', marginBottom: '1rem' }}>
-          <img src={(project as any).capsuleImage} alt="project banner" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          <img src={resolveAsset((project as any).capsuleImage)} alt="project banner" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <div style={{ width: 'min(80ch, 100%)', padding: '2rem' }}>
           <button className="back-home" onClick={() => navigate('/')} style={{ marginBottom: '1rem' }}>{(t as any).backToHome}</button>
@@ -312,7 +317,7 @@ function ProjectDetail() {
                   <p>{item.description}</p>
                 </div>
                 <div className="small-project-media">
-                  <img src={item.image} alt={item.title} />
+                  <img src={resolveAsset(item.image)} alt={item.title} />
                 </div>
               </article>
             ))}
@@ -335,7 +340,7 @@ function ProjectDetail() {
         <button className="back-home" onClick={() => navigate('/')}>{(t as any).backToHome}</button>
         <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>{(t as any)[project.titleKey]}</h1>
         <p style={{ fontSize: '1.2rem', textAlign: 'center', maxWidth: '600px' }} dangerouslySetInnerHTML={{ __html: (t as any)[(project as any).descDetailKey] }} />
-        <img src={(project as any).capsuleImage} alt={(t as any)[project.titleKey]} style={{ 
+        <img src={resolveAsset((project as any).capsuleImage)} alt={(t as any)[project.titleKey]} style={{ 
           width: '400px', 
           height: '400px', 
           objectFit: 'cover', 
